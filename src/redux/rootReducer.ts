@@ -1,13 +1,14 @@
-import {combineReducers, createReducer} from "@reduxjs/toolkit";
+import { createReducer} from "@reduxjs/toolkit";
+import {State} from "@/types/State";
 
 
-const initialState = {
-    users: [{name: 'user1'}]
-}
+const initialState: State = {
+    contacts: []
+};
 
 const rootReducer = createReducer(initialState, {
-    'users/addUser': (state, action) => {
-        state.users.push(action.payload)
+    'contacts/getContacts': (state, action) => {
+        state.contacts = [...state.contacts, ...action.payload]
     }
-})
+});
 export default rootReducer;
