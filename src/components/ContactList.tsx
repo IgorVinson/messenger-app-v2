@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {fetchContacts} from "@/redux/options";
+import {addContact, fetchContacts} from "@/redux/options";
 import {useDispatch, useSelector} from "react-redux";
-import {Dispatch} from "redux";
+import {AnyAction, Dispatch} from "redux";
 import {getContacts} from "@/redux/selectors";
 import {Item} from "@/components/layouts/MainLayOut";
 import Contact from "@/components/Contact";
@@ -15,7 +15,28 @@ const ContactList = () => {
         dispatch(fetchContacts())
     }, [])
 
-    console.log(contacts)
+    const [isOpen, setIsOpen] = React.useState(false);
+    const [contact, setContact] = React.useState({
+        name: '',
+        phone: '',
+        email: '',
+    });
+
+    const toggleContact = () => {
+        setIsOpen(!isOpen)
+    }
+
+    const saveContact = () => {
+        // @ts-ignore
+        dispatch(addContact(contact))
+        setIsOpen(false)
+        setContact({
+            name: '',
+            phone: '',
+            email: '',
+        })
+    }
+
     return (
         <div>
             {contacts.map((contact) => (
@@ -23,6 +44,16 @@ const ContactList = () => {
                     <Contact contact={contact}/>
                 </Item>
             ))}
+            <button onClick={toggleContact}>Add</button>
+            {isOpen && <div>
+                <input type="text" placeholder="Name" value={contact.name}
+                       onChange={(e) => setContact({...contact, name: e.target.value})}/>
+                <input type="text" placeholder="Phone" value={contact.phone}
+                       onChange={(e) => setContact({...contact, phone: e.target.value})}/>
+                <input type="text" placeholder="Email" value={contact.email}
+                       onChange={(e) => setContact({...contact, email: e.target.value})}/>
+                <button onClick={saveContact}>Save</button>
+            </div>}
         </div>
     )
 }

@@ -18,15 +18,19 @@ export default function MainLayOut() {
     return (
         <Box sx={{flexGrow: 1}}
         >
-            <Grid container spacing={0.5}>
+            <Grid container spacing={0.5} sx={
+                {
+                    height: '100vh',
+                }
+            }>
                 <Grid item xs={4}>
-                    <Item sx={{height: '600px'}}>Contacts
+                    <Item sx={{height: '100%'}}>Contacts
                             <ContactList/>
                     </Item>
                 </Grid>
                 <Grid item xs={8}>
                     <Item sx={{
-                        height: '600px', display: 'flex', flexDirection: 'column',
+                        height: '100%', display: 'flex', flexDirection: 'column',
                         justifyContent: 'space-between'
                     }}>
                         <p>Messenger View</p>

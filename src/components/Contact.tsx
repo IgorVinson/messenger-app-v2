@@ -7,7 +7,6 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({contact}) => {
     const {name, phone, email} = contact
-    console.log(contact)
     return (
         <div>
            <p>{name}</p>
