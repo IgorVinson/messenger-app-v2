@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import {TextField} from "@mui/material";
-import {Container} from "@mui/system";
+import ContactList from "@/components/ContactList";
 
-const Item = styled(Paper)(({theme}) => ({
+export const Item = styled(Paper)(({theme}) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
@@ -21,9 +21,7 @@ export default function MainLayOut() {
             <Grid container spacing={0.5}>
                 <Grid item xs={4}>
                     <Item sx={{height: '600px'}}>Contacts
-                        <Item>Contact 1</Item>
-                        <Item>Contact 2</Item>
-                        <Item>Contact 3</Item>
+                            <ContactList/>
                     </Item>
                 </Grid>
                 <Grid item xs={8}>
