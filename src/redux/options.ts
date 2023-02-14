@@ -13,3 +13,5 @@ export const fetchContacts = () => async (dispatch: Dispatch<ContactsAction>) =>
         console.log(e);
     }
 };
+
+console.log('123')
