@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import {addContact, fetchContacts} from "@/redux/options";
 import {useDispatch, useSelector} from "react-redux";
-import {AnyAction, Dispatch} from "redux";
+import {Dispatch} from "redux";
 import {getContacts} from "@/redux/selectors";
-import {Item} from "@/components/layouts/MainLayOut";
 import Contact from "@/components/Contact";
+import {Button, Card, Container, Paper, TextField, Typography} from "@mui/material";
+import {ThemeProvider} from "@mui/system";
+import theme from "@/components/layouts/Theme";
 
 const ContactList = () => {
     const dispatch: Dispatch = useDispatch()
@@ -38,23 +40,29 @@ const ContactList = () => {
     }
 
     return (
-        <div>
-            {contacts.map((contact) => (
-                <Item key={contact.id}>
-                    <Contact contact={contact}/>
-                </Item>
-            ))}
-            <button onClick={toggleContact}>Add</button>
-            {isOpen && <div>
-                <input type="text" placeholder="Name" value={contact.name}
-                       onChange={(e) => setContact({...contact, name: e.target.value})}/>
-                <input type="text" placeholder="Phone" value={contact.phone}
-                       onChange={(e) => setContact({...contact, phone: e.target.value})}/>
-                <input type="text" placeholder="Email" value={contact.email}
-                       onChange={(e) => setContact({...contact, email: e.target.value})}/>
-                <button onClick={saveContact}>Save</button>
-            </div>}
-        </div>
+        <ThemeProvider theme={theme}>
+            <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
+
+                {contacts.map((contact) => (
+                    <Paper key={contact.id}>
+                        <Contact contact={contact}/>
+                    </Paper>
+                ))}
+
+                <Button color={'primary'} onClick={toggleContact}>Add</Button>
+
+                {isOpen && <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
+                    <TextField fullWidth label="Name" value={contact.name}
+                               onChange={(e) => setContact({...contact, name: e.target.value})}/>
+                    <TextField fullWidth label="Phone" value={contact.phone}
+                               onChange={(e) => setContact({...contact, phone: e.target.value})}/>
+                    <TextField fullWidth label="Email" value={contact.email}
+                               onChange={(e) => setContact({...contact, email: e.target.value})}/>
+                    <Button onClick={saveContact}>Save</Button>
+
+                </Container>}
+            </Container>
+        </ThemeProvider>
     )
 }
 

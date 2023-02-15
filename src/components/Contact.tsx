@@ -1,5 +1,6 @@
 import React from 'react';
 import {Contact} from "@/types/Contact";
+import {Container, Typography} from "@mui/material";
 
 interface ContactProps {
     contact: Contact
@@ -8,11 +9,11 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({contact}) => {
     const {name, phone, email} = contact
     return (
-        <div>
-           <p>{name}</p>
-              <p>{phone}</p>
-                <p>{email}</p>
-        </div>
+        <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <Typography>{name}</Typography>
+            <Typography>{phone}</Typography>
+            <Typography>{email}</Typography>
+        </Container>
     );
 };
 
