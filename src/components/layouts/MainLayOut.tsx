@@ -16,13 +16,8 @@ export const Item = styled(Paper)(({theme}) => ({
 
 export default function MainLayOut() {
     return (
-        <Box sx={{flexGrow: 1}}
-        >
-            <Grid container spacing={0.5} sx={
-                {
-                    height: '100vh',
-                }
-            }>
+        <Box sx={{flexGrow: 1}}>
+            <Grid container spacing={0.5} sx={{height: '100vh',}}>
                 <Grid item xs={4}>
                     <Item sx={{height: '100%'}}>Contacts
                             <ContactList/>
