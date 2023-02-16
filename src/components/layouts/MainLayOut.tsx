@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import {Button, Container, TextField, Typography} from "@mui/material";
 import ContactList from "@/components/ContactList";
 import NavBar from "@/components/layouts/NavBar";
+import SendMessage from "@/components/SendMessage";
 
 
 export default function MainLayOut() {
@@ -18,6 +19,7 @@ export default function MainLayOut() {
                     }}>
                         <Typography>Contact list</Typography>
                         <ContactList/>
+                        <SendMessage/>
                     </Paper>
                 </Grid>
                 <Grid item xs={8}>
