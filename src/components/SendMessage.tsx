@@ -1,15 +1,18 @@
 import React from 'react';
 import {Button, Container, TextField} from "@mui/material";
 import axios from "axios";
+import setHostname from "@/config";
+
 
 const SendMessage = () => {
 
+    const baseURL = setHostname()
+    console.log(baseURL)
     const [message, setMessage] = React.useState('');
-
 
     const toggleContact = () => {
         // @ts-ignore
-        axios.post('https://messenger-servise.onrender.com/api/messages', {
+        axios.post(`${baseURL}/api/messages`, {
                 data: message,
             }
         ).then((response) => {
