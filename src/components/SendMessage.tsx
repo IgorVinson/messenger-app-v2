@@ -6,9 +6,10 @@ const SendMessage = () => {
 
     const [message, setMessage] = React.useState('');
 
+
     const toggleContact = () => {
         // @ts-ignore
-        axios.post('http://localhost:80/api/messages', {
+        axios.post('https://messenger-servise.onrender.com/api/messages', {
                 data: message,
             }
         ).then((response) => {
