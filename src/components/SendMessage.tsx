@@ -22,7 +22,7 @@ const SendMessage = () => {
 
     return (
         <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
-            <TextField fullWidth label="Message" value={message}
+            <TextField fullWidth label="Send sms from twilio..." value={message}
                        onChange={(e) => setMessage(e.target.value)}/>
             <Button color={'primary'} onClick={toggleContact}>Send</Button>
         </Container>
