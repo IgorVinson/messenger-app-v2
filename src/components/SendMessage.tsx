@@ -2,7 +2,9 @@ import React from 'react';
 import {Button, Container, TextField} from "@mui/material";
 import axios from "axios";
 import setHostname from "@/config";
-
+import MyButton from "@/components/layouts/MyButton";
+import theme from "@/components/layouts/Theme";
+import {ThemeProvider} from "@mui/system";
 
 const SendMessage = () => {
 
@@ -25,11 +27,13 @@ const SendMessage = () => {
     }
 
     return (
-        <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
-            <TextField fullWidth label="Send sms from twilio..." value={message}
-                       onChange={(e) => setMessage(e.target.value)}/>
-            <Button color={'primary'} onClick={toggleContact}>Send</Button>
-        </Container>
+        <ThemeProvider theme={theme}>
+            <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
+                <TextField fullWidth label="Send sms from twilio..." value={message}
+                           onChange={(e) => setMessage(e.target.value)}/>
+                <MyButton title={'Save'} onClick={toggleContact}/>
+            </Container>
+        </ThemeProvider>
     );
 };
 

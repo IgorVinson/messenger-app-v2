@@ -7,6 +7,7 @@ import Contact from "@/components/Contact";
 import {Button, Card, Container, Paper, TextField, Typography} from "@mui/material";
 import {ThemeProvider} from "@mui/system";
 import theme from "@/components/layouts/Theme";
+import MyButton from "@/components/layouts/MyButton";
 
 const ContactList = () => {
     const dispatch: Dispatch = useDispatch()
@@ -42,15 +43,12 @@ const ContactList = () => {
     return (
         <ThemeProvider theme={theme}>
             <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
-
                 {contacts.map((contact) => (
                     <Paper key={contact.id}>
                         <Contact contact={contact}/>
                     </Paper>
                 ))}
-
-                <Button color={'primary'} onClick={toggleContact}>Add</Button>
-
+                <MyButton title={'Add'} onClick={toggleContact}/>
                 {isOpen && <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
                     <TextField fullWidth label="Name" value={contact.name}
                                onChange={(e) => setContact({...contact, name: e.target.value})}/>
@@ -58,8 +56,7 @@ const ContactList = () => {
                                onChange={(e) => setContact({...contact, phone: e.target.value})}/>
                     <TextField fullWidth label="Email" value={contact.email}
                                onChange={(e) => setContact({...contact, email: e.target.value})}/>
-                    <Button onClick={saveContact}>Save</Button>
-
+                    <MyButton title={'Save'} onClick={saveContact}/>
                 </Container>}
             </Container>
         </ThemeProvider>

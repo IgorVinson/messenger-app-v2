@@ -9,7 +9,8 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({contact}) => {
     const {name, phone, email} = contact
     return (
-        <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center',
+            borderBottom:'1px solid lightgrey'}}>
             <Typography>{name}</Typography>
             <Typography>{phone}</Typography>
             <Typography>{email}</Typography>
