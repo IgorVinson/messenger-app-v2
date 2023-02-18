@@ -7,6 +7,9 @@ const theme = createTheme({
             contrastText: '#fff',
         },
     },
+    typography: {
+        fontFamily: 'Roboto',
+    }
 });
 
 export default theme;
