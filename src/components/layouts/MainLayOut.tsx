@@ -17,7 +17,7 @@ export default function MainLayOut() {
                         height: '100%', width: '100%', display: 'flex', flexDirection: 'column',
                         alignItems: 'center'
                     }}>
-                        <Typography>Contact list</Typography>
+                        <Typography >Contact list</Typography>
                         <ContactList/>
                         <SendMessage/>
                     </Paper>

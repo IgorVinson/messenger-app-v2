@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Container, TextField} from "@mui/material";
+import {Container, TextField} from "@mui/material";
 import axios from "axios";
 import setHostname from "@/config";
 import MyButton from "@/components/layouts/MyButton";
@@ -31,7 +31,7 @@ const SendMessage = () => {
             <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
                 <TextField fullWidth label="Send sms from twilio..." value={message}
                            onChange={(e) => setMessage(e.target.value)}/>
-                <MyButton title={'Save'} onClick={toggleContact}/>
+                <MyButton title={'Send'} onClick={toggleContact}/>
             </Container>
         </ThemeProvider>
     );
