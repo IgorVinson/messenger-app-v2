@@ -1,14 +1,14 @@
 import React from 'react';
 import {Container, TextField} from "@mui/material";
 import axios from "axios";
-import setHostname from "@/config";
+import SetHostname from "@/config";
 import MyButton from "@/components/layouts/MyButton";
 import theme from "@/components/layouts/Theme";
 import {ThemeProvider} from "@mui/system";
 
 const SendMessage = () => {
 
-    const baseURL = setHostname()
+    const baseURL = SetHostname()
     console.log(baseURL)
     const [message, setMessage] = React.useState('');
 

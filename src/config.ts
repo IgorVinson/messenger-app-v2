@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-export default function setHostname() {
+export default function SetHostname() {
     const [hostname, setHostName] = useState("");
 
     useEffect(() => {
