@@ -33,7 +33,7 @@ export default function MainLayOut() {
         <Container sx={{display: 'flex', flexDirection: 'column'}}>
             <NavBar handleToggleContactList={handleToggleContactList} showContactList={showContactList}/>
             <Grid container spacing={0.5}>
-                <Grid item lg={3} md={4} sm={5} xs={12}
+                <Grid item lg={3} md={4} sm={4} xs={12}
                       sx={{display: showContactList ? 'inline' : 'none'}}>
                     <Paper
                         style={{
@@ -51,7 +51,7 @@ export default function MainLayOut() {
                         <SendMessage/>
                     </Paper>
                 </Grid>
-                <Grid item lg={9} md={8} sm={9} xs={12}>
+                <Grid item lg={9} md={8} sm={8} xs={12}>
                     <Paper
                         style={{
                             height: '100%',
