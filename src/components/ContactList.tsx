@@ -16,7 +16,7 @@ const ContactList = () => {
     useEffect(() => {
         // @ts-ignore
         dispatch(fetchContacts())
-    }, [])
+    }, [dispatch])
 
     return (
         <ThemeProvider theme={theme}>
