@@ -11,7 +11,7 @@ import MyButton from "@/components/layouts/MyButton";
 export default function NavBar() {
     return (
         <ThemeProvider theme={theme}>
-            <Box sx={{flexGrow: 1}}>
+            <Box sx={{flexGrow: 1, marginBlock: '5px'}}>
                 <AppBar position="static" color={'primary'}>
                     <Toolbar>
                         <IconButton

@@ -11,13 +11,13 @@ export default function MainLayOut() {
     return (
         <Container>
             <NavBar/>
-            <Grid container spacing={0.5} sx={{height: '100vh',}}>
+            <Grid container spacing={0.5} sx={{height: '100vh'}}>
                 <Grid item xs={4}>
                     <Paper sx={{
                         height: '100%', width: '100%', display: 'flex', flexDirection: 'column',
                         alignItems: 'center'
                     }}>
-                        <Typography >Contact list</Typography>
+                        <Typography>Contact list</Typography>
                         <ContactList/>
                         <SendMessage/>
                     </Paper>

@@ -21,7 +21,7 @@ const style = {
 };
 
 
-export default function BasicModal() {
+export default function AddContactModal() {
     const dispatch: Dispatch = useDispatch()
 
     const [contact, setContact] = React.useState({

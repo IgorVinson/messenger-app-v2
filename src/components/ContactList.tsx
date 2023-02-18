@@ -7,7 +7,7 @@ import Contact from "@/components/Contact";
 import {Container, Paper} from "@mui/material";
 import {ThemeProvider} from "@mui/system";
 import theme from "@/components/layouts/Theme";
-import BasicModal from "@/components/layouts/Modal";
+import AddContactModal from "@/components/layouts/AddContactModal";
 
 const ContactList = () => {
     const dispatch: Dispatch = useDispatch()
@@ -26,7 +26,7 @@ const ContactList = () => {
                         <Contact contact={contact}/>
                     </Paper>
                 ))}
-                <BasicModal/>
+                <AddContactModal/>
             </Container>
         </ThemeProvider>
     )
