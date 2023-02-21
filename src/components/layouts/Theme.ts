@@ -9,7 +9,7 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: 'Roboto',
-    }
+    },
 });
 
 export default theme;
