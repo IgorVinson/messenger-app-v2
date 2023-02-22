@@ -1,13 +1,15 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import {Container, TextField, Typography} from "@mui/material";
+import {Box, Container, TextField, Typography} from "@mui/material";
 import ContactList from "@/components/contactList";
 import SendMessage from "@/components/sendMessage";
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {useEffect} from 'react';
 import MyButton from "@/components/layouts/myButton";
+import Message from "@/components/layouts/message";
+
 
 interface MessengerProps {
     handleToggleContactList: () => void;
@@ -31,7 +33,7 @@ export default function Messenger({handleToggleContactList, showContactList, set
 
 
     return (
-        <Container sx={{display: 'flex', flexDirection: 'column'}}>
+        <Container sx={{display: 'flex', flexDirection: 'column', }}>
             <Grid container spacing={0.5}>
                 <Grid item lg={3} md={4} sm={4} xs={12}
                       sx={{display: showContactList ? 'inline' : 'none'}}>
@@ -57,13 +59,21 @@ export default function Messenger({handleToggleContactList, showContactList, set
                             height: '100%',
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center',
+                            alignItems: 'start',
                             justifyContent: 'space-between',
                         }}
                     >
+
                         <Typography variant="h6" style={{paddingTop: 10}}>
                             Messenger View
                         </Typography>
+
+                        <Box sx={{flex: 'auto', display: 'flex', flexDirection: 'column',}}>
+                            <Message text={'This is test message'}/>
+                            <Message text={'This is test message'}/>
+                            <Message text={'This is test message'}/>
+                        </Box>
+
                         <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined"/>
                         {isSM && (
                             <MyButton
