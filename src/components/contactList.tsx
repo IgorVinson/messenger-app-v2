@@ -3,11 +3,11 @@ import {fetchContacts} from "@/redux/options";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
 import {getContacts} from "@/redux/selectors";
-import Contact from "@/components/Contact";
+import Contact from "@/components/contact";
 import {Container, Paper} from "@mui/material";
 import {ThemeProvider} from "@mui/system";
-import theme from "@/components/layouts/Theme";
-import AddContactModal from "@/components/layouts/AddContactModal";
+import theme from "@/components/layouts/theme";
+import AddContactModal from "@/components/layouts/addContactModal";
 
 const ContactList = () => {
     const dispatch: Dispatch = useDispatch()

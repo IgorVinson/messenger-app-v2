@@ -3,9 +3,9 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import theme from "@/components/layouts/Theme";
+import theme from "@/components/layouts/theme";
 import {ThemeProvider} from "@mui/system";
-import MyButton from "@/components/layouts/MyButton";
+import MyButton from "@/components/layouts/myButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface NavBarProps {

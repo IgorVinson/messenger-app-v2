@@ -2,20 +2,24 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import {Container, TextField, Typography} from "@mui/material";
-import ContactList from "@/components/ContactList";
-import NavBar from "@/components/layouts/NavBar";
-import SendMessage from "@/components/SendMessage";
+import ContactList from "@/components/contactList";
+import SendMessage from "@/components/sendMessage";
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery'
-import {useEffect, useState} from 'react';
-import MyButton from "@/components/layouts/MyButton";
+import {useEffect} from 'react';
+import MyButton from "@/components/layouts/myButton";
 
-export default function MainLayOut() {
+interface MessengerProps {
+    handleToggleContactList: () => void;
+    showContactList: boolean;
+    setShowContactList: (showContactList: boolean) => void;
+}
+
+export default function Messenger({handleToggleContactList, showContactList, setShowContactList}: MessengerProps) {
     const theme = useTheme();
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
-    console.log('isSM', isSM)
-    const [showContactList, setShowContactList] = useState(true);
-    console.log('showContact', showContactList)
+    // const [showContactList, setShowContactList] = useState(true);
+
 
     useEffect(() => {
         if (isSM) {
@@ -25,13 +29,9 @@ export default function MainLayOut() {
         }
     }, [isSM])
 
-    const handleToggleContactList = () => {
-        setShowContactList(!showContactList);
-    };
 
     return (
         <Container sx={{display: 'flex', flexDirection: 'column'}}>
-            <NavBar handleToggleContactList={handleToggleContactList} showContactList={showContactList}/>
             <Grid container spacing={0.5}>
                 <Grid item lg={3} md={4} sm={4} xs={12}
                       sx={{display: showContactList ? 'inline' : 'none'}}>

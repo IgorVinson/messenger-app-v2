@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import MyButton from "@/components/layouts/MyButton";
+import MyButton from "@/components/layouts/myButton";
 import {Container, TextField} from "@mui/material";
 import {addContact} from "@/redux/options";
 import {Dispatch} from "redux";
