@@ -6,9 +6,13 @@ import ContactList from "@/components/contactList";
 import SendMessage from "@/components/sendMessage";
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery'
-import {useEffect} from 'react';
-import MyButton from "@/components/layouts/myButton";
-import Message from "@/components/layouts/message";
+import {useEffect, useState} from 'react';
+import MyButton from "@/components/ui/myButton";
+import Message from "@/components/ui/message";
+import io from 'socket.io-client';
+
+
+export const socket = io('http://localhost:8080');
 
 
 interface MessengerProps {
@@ -31,9 +35,26 @@ export default function Messenger({handleToggleContactList, showContactList, set
         }
     }, [isSM])
 
+    const [message, setMessage] = useState('');
+
+    const handleMessageChange = (event:any) => {
+        setMessage(event.target.value);
+    };
+
+    const handleSendMessage = () => {
+        socket.emit('chat-message', message);
+        setMessage('');
+    };
+
+    // useEffect(() => {
+    //     // Set up a listener for chat messages from the server
+    //     socket.on('chat-message', (data) => {
+    //         console.log(`Received message from server: ${data}`);
+    //     });
+    // }, []);
 
     return (
-        <Container sx={{display: 'flex', flexDirection: 'column', }}>
+        <Container sx={{display: 'flex', flexDirection: 'column',}}>
             <Grid container spacing={0.5}>
                 <Grid item lg={3} md={4} sm={4} xs={12}
                       sx={{display: showContactList ? 'inline' : 'none'}}>
@@ -74,7 +95,10 @@ export default function Messenger({handleToggleContactList, showContactList, set
                             <Message text={'This is test message'}/>
                         </Box>
 
-                        <TextField fullWidth id="outlined-basic" label="Outlined" variant="outlined"/>
+                        <TextField  fullWidth id="outlined-basic" label="Outlined"
+                                   variant="outlined"/>
+                        <input type="text" value={message} onChange={handleMessageChange} />
+                        <button onClick={handleSendMessage}>Send Message</button>
                         {isSM && (
                             <MyButton
                                 onClick={handleToggleContactList}

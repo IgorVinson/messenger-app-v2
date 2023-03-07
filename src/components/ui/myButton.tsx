@@ -3,7 +3,7 @@ import {Button, Container} from "@mui/material";
 
 interface MyButtonProps {
     title: string
-    onClick: () => void
+    onClick?: () => void
     justifyContent?: 'flex-start' | 'center' | 'flex-end'
 }
 
@@ -14,7 +14,8 @@ const MyButton = ({title, onClick, justifyContent}: MyButtonProps) => {
                 size={'small'}
                 variant="contained"
                 color={'primary'}
-                onClick={onClick}>{title}
+                onClick={onClick}>
+                {title}
             </Button>
         </Container>
     );

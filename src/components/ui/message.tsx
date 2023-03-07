@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import {ThemeProvider} from "@mui/material";
-import theme from "@/components/layouts/theme";
+import theme from "@/components/ui/theme";
 
 interface MessageProps {
     text: string;

@@ -1,12 +1,17 @@
-import Layout from "@/components/layouts/layout";
+import MainLayout from "@/components/ui/mainLayout";
 import {useState} from "react";
 import Messenger from "@/pages/Messenger";
 import Login from "@/pages/Login";
+import {useSelector} from "react-redux";
+import {getUserLogin} from "@/redux/selectors";
+
 
 
 export default function Home() {
+    const isLogin = useSelector(getUserLogin)
 
-    const [isLogin, setIsLogin] = useState(false)
+    // const [isLogin, setIsLogin] = useState(useSelector(getUserLogin))
+
     const [showContactList, setShowContactList] = useState(true);
     const handleToggleContactList = () => {
         setShowContactList(!showContactList);
@@ -14,13 +19,15 @@ export default function Home() {
 
     return (
         <>
-            <Layout handleToggleContactList={handleToggleContactList} showContactList={showContactList}>
+            <MainLayout
+                handleToggleContactList={handleToggleContactList}
+                showContactList={showContactList}>
                 {isLogin ? <Messenger
                     showContactList={showContactList}
                     setShowContactList={setShowContactList}
                     handleToggleContactList={handleToggleContactList}
-                /> : <Login setLogin={setIsLogin}/>}
-            </Layout>
+                /> : <Login/>}
+            </MainLayout>
         </>
     )
 }

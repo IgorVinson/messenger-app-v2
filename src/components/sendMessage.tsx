@@ -2,8 +2,8 @@ import React from 'react';
 import {Container, TextField} from "@mui/material";
 import axios from "axios";
 import SetHostname from "@/config";
-import MyButton from "@/components/layouts/myButton";
-import theme from "@/components/layouts/theme";
+import MyButton from "@/components/ui/myButton";
+import theme from "@/components/ui/theme";
 import {ThemeProvider} from "@mui/system";
 
 const SendMessage = () => {
