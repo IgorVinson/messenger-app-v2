@@ -11,9 +11,7 @@ import MyButton from "@/components/ui/myButton";
 import Message from "@/components/ui/message";
 import io from 'socket.io-client';
 
-
 export const socket = io('http://localhost:8080');
-
 
 interface MessengerProps {
     handleToggleContactList: () => void;
@@ -24,8 +22,6 @@ interface MessengerProps {
 export default function Messenger({handleToggleContactList, showContactList, setShowContactList}: MessengerProps) {
     const theme = useTheme();
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
-    // const [showContactList, setShowContactList] = useState(true);
-
 
     useEffect(() => {
         if (isSM) {

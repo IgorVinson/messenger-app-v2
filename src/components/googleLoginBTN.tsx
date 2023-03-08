@@ -25,7 +25,7 @@ const GoogleLoginBTN = () => {
             const { name, email } = response.data;
 
             // do something with the name and email, e.g. update the UI
-            dispatch(loginUser({name,email}))
+            dispatch(loginUser({username:name,email}))
         } catch (error) {
             // handle error
         }

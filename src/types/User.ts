@@ -1,4 +1,8 @@
+
 export interface User {
-    data: object;
+    data: {
+        name: string,
+        email: string,
+    };
     isLogin: boolean
 }

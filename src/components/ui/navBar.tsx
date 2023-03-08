@@ -9,8 +9,9 @@ import MyButton from "@/components/ui/myButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {Avatar} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
-import {getUserLogin} from "@/redux/selectors";
+import {getUser, getUserLogin} from "@/redux/selectors";
 import {logoutUser} from "@/redux/userSlice";
+import {User} from "@/types/User";
 
 interface NavBarProps {
     showContactList: boolean;
@@ -18,14 +19,19 @@ interface NavBarProps {
 }
 
 export default function NavBar({showContactList, handleToggleContactList}: NavBarProps) {
-    const isLogin = useSelector(getUserLogin)
+
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
+
+    const isLogin = useSelector(getUserLogin)
+    const user:User = useSelector(getUser);
+    const {name} = user.data;
 
     const dispatch = useDispatch();
 
     const logout = () => {
         dispatch(logoutUser());
     }
+
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{flexGrow: 1, marginBlock: '5px'}}>
@@ -54,7 +60,8 @@ export default function NavBar({showContactList, handleToggleContactList}: NavBa
                                 <MyButton title={'logout'}
                                           onClick={logout}
                                           justifyContent={'flex-end'}/>
-                                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg"/>
+
+                                <Avatar alt={name} src="/static/images/avatar/3.jpg"/>
                             </>
                         }
 
