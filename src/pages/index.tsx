@@ -10,8 +10,6 @@ import {getUserLogin} from "@/redux/selectors";
 export default function Home() {
     const isLogin = useSelector(getUserLogin)
 
-    // const [isLogin, setIsLogin] = useState(useSelector(getUserLogin))
-
     const [showContactList, setShowContactList] = useState(true);
     const handleToggleContactList = () => {
         setShowContactList(!showContactList);

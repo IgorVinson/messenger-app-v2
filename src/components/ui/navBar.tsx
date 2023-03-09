@@ -13,20 +13,19 @@ import {getUser, getUserLogin} from "@/redux/selectors";
 import {logoutUser} from "@/redux/userSlice";
 import {User} from "@/types/User";
 
+
 interface NavBarProps {
     showContactList: boolean;
     handleToggleContactList: () => void;
 }
 
 export default function NavBar({showContactList, handleToggleContactList}: NavBarProps) {
+    const dispatch = useDispatch();
 
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
-
-    const isLogin = useSelector(getUserLogin)
-    const user:User = useSelector(getUser);
-    const {name} = user.data;
-
-    const dispatch = useDispatch();
+    const isUserLogin = useSelector(getUserLogin)
+    const user: User = useSelector(getUser);
+    const {username} = user.data;
 
     const logout = () => {
         dispatch(logoutUser());
@@ -55,13 +54,13 @@ export default function NavBar({showContactList, handleToggleContactList}: NavBa
                                 justifyContent={'flex-start'}
                             />
                         }
-                        {isLogin &&
+                        {isUserLogin &&
                             <>
                                 <MyButton title={'logout'}
                                           onClick={logout}
                                           justifyContent={'flex-end'}/>
 
-                                <Avatar alt={name} src="/static/images/avatar/3.jpg"/>
+                                <Avatar alt={username} src="/static/images/avatar/3.jpg"/>
                             </>
                         }
 

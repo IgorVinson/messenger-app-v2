@@ -10,6 +10,10 @@ import {useEffect, useState} from 'react';
 import MyButton from "@/components/ui/myButton";
 import Message from "@/components/ui/message";
 import io from 'socket.io-client';
+import {addUser} from "@/queriesToDB/addUser";
+import {useSelector} from "react-redux";
+import {getUser} from "@/redux/selectors";
+import {User} from "@/types/User";
 
 export const socket = io('http://localhost:8080');
 
@@ -23,12 +27,16 @@ export default function Messenger({handleToggleContactList, showContactList, set
     const theme = useTheme();
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
 
+    const user = useSelector(getUser)
+    console.log('user', user)
+
     useEffect(() => {
         if (isSM) {
             setShowContactList(false);
         } else {
             setShowContactList(true);
         }
+        addUser(user.data)
     }, [isSM])
 
     const [message, setMessage] = useState('');
@@ -41,13 +49,6 @@ export default function Messenger({handleToggleContactList, showContactList, set
         socket.emit('chat-message', message);
         setMessage('');
     };
-
-    // useEffect(() => {
-    //     // Set up a listener for chat messages from the server
-    //     socket.on('chat-message', (data) => {
-    //         console.log(`Received message from server: ${data}`);
-    //     });
-    // }, []);
 
     return (
         <Container sx={{display: 'flex', flexDirection: 'column',}}>

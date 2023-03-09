@@ -2,7 +2,7 @@
 export interface User {
     data: {
         id?: number,
-        name: string,
+        username: string,
         email: string,
     };
     isLogin: boolean
