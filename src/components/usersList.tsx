@@ -15,12 +15,11 @@ const UsersList = () => {
 
     const users = useSelector((state: State) => state.users.data)
     const currentUser = useSelector(getUser)
-    console.log('user', currentUser)
 
     useEffect(() => {
         // @ts-ignore
         dispatch(fetchUsers());
-    }, [users]);
+    }, [dispatch]);
 
     return (
         <ThemeProvider theme={theme}>
