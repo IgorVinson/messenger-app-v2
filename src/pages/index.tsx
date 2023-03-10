@@ -6,7 +6,6 @@ import {useSelector} from "react-redux";
 import {getUserLogin} from "@/redux/selectors";
 
 
-
 export default function Home() {
     const isLogin = useSelector(getUserLogin)
 

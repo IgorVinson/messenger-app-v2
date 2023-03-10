@@ -8,34 +8,39 @@ import theme from "@/components/ui/theme";
 import AddContactModal from "@/components/ui/addContactModal";
 import {fetchUsers} from "@/redux/usersListSlice";
 import {State} from "@/types/State";
+import {getUser} from "@/redux/selectors";
 
-const ContactList = () => {
+const UsersList = () => {
     const dispatch: Dispatch = useDispatch()
 
-    const users = useSelector((state:State) => state.users.data)
+    const users = useSelector((state: State) => state.users.data)
+    const currentUser = useSelector(getUser)
+    console.log('user', currentUser)
 
     useEffect(() => {
         // @ts-ignore
         dispatch(fetchUsers());
-    }, [dispatch]);
+    }, [users]);
 
     return (
         <ThemeProvider theme={theme}>
             <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
-                {users.map((user: any) => (
+                {users.filter((user: any) => user.email !== currentUser.data.email).map((user: any) => (
                     <Paper key={user.id}>
-                            <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center',
-                                borderBottom:'1px solid lightgrey'}}>
-                                <Typography>{user.username}</Typography>
-                                <Typography>{user.email}</Typography>
-                            </Container>
+                        <Container sx={{
+                            display: 'flex', flexDirection: 'column', alignItems: 'center',
+                            borderBottom: '1px solid lightgrey'
+                        }}>
+                            <Typography>{user.username}</Typography>
+                            <Typography>{user.email}</Typography>
+                        </Container>
                     </Paper>
                 ))
                 }
-                <AddContactModal/>
+                {/*<AddContactModal/>*/}
             </Container>
         </ThemeProvider>
     )
 }
 
-export default ContactList;
+export default UsersList;

@@ -20,7 +20,6 @@ const style = {
     p: 4,
 };
 
-
 export default function AddContactModal() {
     const dispatch: Dispatch = useDispatch()
 
