@@ -10,7 +10,7 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({contact, handleContact}) => {
     const selectedContact = useSelector((state: any) => state.user.selectedContact)
-    console.log("test_brunch")
+
     return (
         <Paper key={contact.id}>
             <Container
