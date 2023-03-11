@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {getUserLogin} from "@/redux/selectors";
 import io from "socket.io-client";
 
-const socket = io('http://localhost:8080');
+export const socket = io('http://localhost:8080');
 
 export default function Home() {
     const [isConnected, setIsConnected] = useState(socket.connected);

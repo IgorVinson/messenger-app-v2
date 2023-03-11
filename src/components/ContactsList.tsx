@@ -33,7 +33,7 @@ const ContactsList = () => {
         <ThemeProvider theme={theme}>
             <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
                 {contacts
-                    .filter((contact: any) => contact.email !== currentUser.data.email)
+                    .filter((contact: any) => contact.email !== currentUser.email)
                     .map((contact: any) => (
                         <Contact
                             key={contact.id}

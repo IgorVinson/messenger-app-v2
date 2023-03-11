@@ -25,7 +25,7 @@ export default function NavBar({showContactList, handleToggleContactList}: NavBa
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
     const isUserLogin = useSelector(getUserLogin)
     const user: User = useSelector(getUser);
-    const {username} = user.data;
+    const {username} = user;
 
     const logout = () => {
         dispatch(logoutUser());
