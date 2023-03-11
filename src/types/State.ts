@@ -1,11 +1,11 @@
 import {Contact} from "@/types/Contact";
 import {User} from "@/types/User";
-import {Users} from "@/types/Users";
+import {Message} from "@/types/Message";
 
 export interface State {
 
-    contacts: Contact[];
-    user: User
-    users: Users
+    contacts: Contact[],
+    user: User,
+    messages: Message[],
 }
 

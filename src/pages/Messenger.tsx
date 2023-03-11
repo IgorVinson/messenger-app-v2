@@ -1,18 +1,18 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import {Box, Container, TextField, Typography} from "@mui/material";
+import {Container} from "@mui/material";
 import ContactsList from "@/components/ContactsList";
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {useEffect, useState} from 'react';
 import MyButton from "@/components/ui/myButton";
-import Message from "@/components/ui/message";
 import {addUser} from "@/queriesToDB/addUser";
 import {useSelector} from "react-redux";
 import {getUser} from "@/redux/selectors";
 import {ThemeProvider} from "@mui/system";
 import actualTtheme from "@/components/ui/theme";
+import MessagesField from "@/components/MessagesField";
 
 
 interface MessengerProps {
@@ -69,20 +69,7 @@ export default function Messenger({handleToggleContactList, showContactList, set
                                 justifyContent: 'flex-end',
                             }}
                         >
-                            <Box sx={{flex: 'auto', display: 'flex', flexDirection: 'column',}}>
-                                <Message text={'This is test message'}/>
-                                <Message text={'This is test message'}/>
-                                <Message text={'This is test message'}/>
-                                <Message text={'This is test message'}/>
-                            </Box>
-                            <TextField
-                                fullWidth id="outlined-basic"
-                                label="Outlined"
-                                variant="outlined"
-                                sx={{position: 'absolute', bottom: 0, left: 0, right: 0}}
-                            />
-                            <Box sx={{position: 'absolute', bottom: '5px', right: '-15px'}}><MyButton title={'sms'}/></Box>
-
+                            <MessagesField/>
                             {/*<input type="text" value={message} onChange={handleMessageChange} />*/}
                             {/*<button onClick={handleSendMessage}>Send Message</button>*/}
                             {isSM && (
