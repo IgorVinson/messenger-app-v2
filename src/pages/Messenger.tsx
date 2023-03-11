@@ -2,20 +2,18 @@ import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import {Box, Container, TextField, Typography} from "@mui/material";
-import UsersList from "@/components/usersList";
+import ContactsList from "@/components/ContactsList";
 import {useTheme} from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {useEffect, useState} from 'react';
 import MyButton from "@/components/ui/myButton";
 import Message from "@/components/ui/message";
-import io from 'socket.io-client';
 import {addUser} from "@/queriesToDB/addUser";
 import {useSelector} from "react-redux";
 import {getUser} from "@/redux/selectors";
 import {ThemeProvider} from "@mui/system";
 import actualTtheme from "@/components/ui/theme";
 
-export const socket = io('http://localhost:8080');
 
 interface MessengerProps {
     handleToggleContactList: () => void;
@@ -26,7 +24,6 @@ interface MessengerProps {
 export default function Messenger({handleToggleContactList, showContactList, setShowContactList}: MessengerProps) {
     const theme = useTheme();
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
-
     const user = useSelector(getUser)
 
     useEffect(() => {
@@ -44,10 +41,6 @@ export default function Messenger({handleToggleContactList, showContactList, set
         setMessage(event.target.value);
     };
 
-    const handleSendMessage = () => {
-        socket.emit('chat-message', message);
-        setMessage('');
-    };
 
     return (
         <ThemeProvider theme={actualTtheme}>
@@ -64,7 +57,7 @@ export default function Messenger({handleToggleContactList, showContactList, set
                                 justifyContent: 'start',
                             }}
                         >
-                            <UsersList/>
+                            <ContactsList/>
                             {/*<SendMessage/>*/}
                         </Paper>
                     </Grid>

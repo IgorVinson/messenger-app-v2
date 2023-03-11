@@ -1,13 +1,13 @@
 import {createSlice, createAsyncThunk, AsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchUsers= createAsyncThunk('users/fetchUsers', async () => {
+export const fetchContacts= createAsyncThunk('users/fetchUsers', async () => {
     const response = await axios.get('http://localhost:8080/users');
     return response.data;
 });
 
-const usersListSlice = createSlice({
-    name: 'users',
+const contactsListSlice = createSlice({
+    name: 'contacts',
     initialState: {
         data: [],
         isLoading: false,
@@ -15,18 +15,18 @@ const usersListSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchUsers.pending, (state) => {
+            .addCase(fetchContacts.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
+            .addCase(fetchContacts.fulfilled, (state, action) => {
                 state.data = action.payload;
                 state.isLoading = false;
             })
-            .addCase(fetchUsers.rejected, (state) => {
+            .addCase(fetchContacts.rejected, (state) => {
                 state.isLoading = false;
             });
     },
 });
 
-export const usersListReducer = usersListSlice.reducer;
+export const contactsListReducer = contactsListSlice.reducer;
 
