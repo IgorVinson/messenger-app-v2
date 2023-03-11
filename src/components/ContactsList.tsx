@@ -11,6 +11,7 @@ import {State} from "@/types/State";
 import {getUser} from "@/redux/selectors";
 import Contact from "@/components/Contact";
 import {selectContact} from "@/redux/userSlice";
+import Box from "@mui/material/Box";
 
 const ContactsList = () => {
     const dispatch: Dispatch = useDispatch()
@@ -31,7 +32,7 @@ const ContactsList = () => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Container disableGutters sx={{display: 'flex', flexDirection: 'column'}}>
+            <Container disableGutters sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 {contacts
                     .filter((contact: any) => contact.email !== currentUser.email)
                     .map((contact: any) => (
@@ -42,6 +43,7 @@ const ContactsList = () => {
                         />
                     ))
                 }
+                {contacts.length === 1 && <Box sx={{textAlign: 'center'}}>no contacts yet</Box>}
                 {/*<AddContactModal/>*/}
             </Container>
         </ThemeProvider>

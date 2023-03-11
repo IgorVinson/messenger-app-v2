@@ -5,7 +5,7 @@ import axios from "axios";
 
 const hostname = SetHostname()
 
-export const addUser = async (user: User) => {
+export const addUser = async (user: { email: any; username: any }) => {
     const response = await axios.post(`${hostname}/addUser`, user)
     return response.data
 }

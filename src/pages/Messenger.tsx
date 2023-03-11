@@ -24,7 +24,6 @@ interface MessengerProps {
 export default function Messenger({handleToggleContactList, showContactList, setShowContactList}: MessengerProps) {
     const theme = useTheme();
     const isSM = useMediaQuery(theme.breakpoints.down('sm'));
-    const user = useSelector(getUser)
 
     useEffect(() => {
         if (isSM) {
@@ -32,8 +31,8 @@ export default function Messenger({handleToggleContactList, showContactList, set
         } else {
             setShowContactList(true);
         }
-        addUser(user.data)
     }, [isSM])
+
 
     const [message, setMessage] = useState('');
 
