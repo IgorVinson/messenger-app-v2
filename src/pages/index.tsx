@@ -15,7 +15,6 @@ export default function Home() {
     console.log('WebSocket connected: ', isConnected);
 
     const [showContactList, setShowContactList] = useState(true);
-    const [lastPong, setLastPong] = useState(null);
 
     const handleToggleContactList = () => {
         setShowContactList(!showContactList);
