@@ -14,7 +14,6 @@ import {ThemeProvider} from "@mui/system";
 import actualTtheme from "@/components/ui/theme";
 import MessagesField from "@/components/MessagesField";
 
-
 interface MessengerProps {
     handleToggleContactList: () => void;
     showContactList: boolean;
