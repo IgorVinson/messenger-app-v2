@@ -23,7 +23,6 @@ const ContactsList = () => {
     }, [dispatch]);
 
     const handleContact = (id: string) => {
-        console.log('handleContact', id)
         dispatch(selectContact(id));
     }
 
