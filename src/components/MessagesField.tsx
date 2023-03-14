@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Box, Paper, TextField} from "@mui/material";
+import {Box, Paper} from "@mui/material";
 import Message from "@/components/ui/message";
 import SendMessageForm from "@/components/SendMessageForm";
 import {socket} from "@/utils/socketConnect";
@@ -24,6 +24,7 @@ const MessagesField = () => {
     }, [sender_id, receiver_id])
 
     socket.on('message', (data) => {
+        // @ts-ignore
         setMessages([...messages, data]);
     })
 

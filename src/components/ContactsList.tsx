@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
-import {Container, Paper} from "@mui/material";
+import {Container} from "@mui/material";
 import {ThemeProvider} from "@mui/system";
 import theme from "@/components/ui/theme";
 import {fetchContacts} from "@/redux/contactsListSlice";
@@ -29,7 +29,6 @@ const ContactsList = () => {
 
     return (
         <ThemeProvider theme={theme}>
-
             <Container disableGutters sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 {contacts
                     .filter((contact: any) => contact.email !== currentUser.email)
