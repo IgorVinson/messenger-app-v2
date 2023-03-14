@@ -3,4 +3,9 @@ import SetHostname from "@/config";
 
 const hostname = SetHostname()
 
-export const socket = io(`${hostname}`);
+export const socket = io(`${hostname}`, {
+    withCredentials: true,
+    extraHeaders: {
+        "my-custom-header": "abcd"
+    }
+});
