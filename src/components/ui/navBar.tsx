@@ -36,8 +36,7 @@ export default function NavBar({showContactList, handleToggleContactList}: NavBa
             <Box sx={{flexGrow: 1, marginBlock: '5px'}}>
                 <AppBar position="static" color={'primary'}>
                     <Toolbar>
-                        {!isSM
-                            ?
+
                             <IconButton
                                 size="small"
                                 edge="start"
@@ -48,12 +47,8 @@ export default function NavBar({showContactList, handleToggleContactList}: NavBa
                                 Messenger
                             </IconButton>
 
-                            : <MyButton
-                                onClick={handleToggleContactList}
-                                title={showContactList ? 'Hide contact list' : '...'}
-                                justifyContent={'flex-start'}
-                            />
-                        }
+
+
                         {isUserLogin &&
                             <>
                                 <MyButton title={'logout'}

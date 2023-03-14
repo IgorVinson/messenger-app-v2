@@ -1,31 +1,51 @@
 import React from 'react';
 import {Box, TextField} from "@mui/material";
 import MyButton from "@/components/ui/myButton";
-import {socket} from "@/pages";
+
+
+import {useSelector} from "react-redux";
+import {socket} from "@/utils/socketConnect";
 
 const SendMessageForm = () => {
-    const [textMessage, setTextMessage] = React.useState('');
+    const [message_text, setTextMessage] = React.useState('');
+    const sender_id = useSelector((state: any) => state.user.id);
+    const receiver_id = useSelector((state: any) => state.user.selectedContact);
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
         if (event.key === 'Enter') {
-            socket.emit('message', textMessage);
+            const message = {
+                sender_id,
+                receiver_id,
+                message_text
+            }
+            socket.emit('message', message);
+            setTextMessage('');
         }
     };
 
-
     return (
-        <>
+        <Box sx={{
+            position: 'relative',
+            margin: '10px',
+        }}>
             <TextField
                 fullWidth id="outlined-basic"
                 label="Outlined"
                 variant="outlined"
-                sx={{position: 'absolute', bottom: 0, left: 0, right: 0}}
-                value={textMessage}
+                value={message_text}
                 onChange={(e) => setTextMessage(e.target.value)}
                 onKeyDown={handleKeyDown}
             />
-            <Box sx={{position: 'absolute', bottom: '5px', right: '-15px'}}><MyButton title={'sms'}/></Box>
-        </>
+            <Box sx={{
+                position: 'absolute',
+                top: '50%',
+                right: '0',
+                transform: 'translateY(-50%)',
+            }}>
+                <MyButton title={'sms'}/>
+            </Box>
+
+        </Box>
     );
 };
 
