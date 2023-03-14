@@ -1,42 +1,45 @@
-import React from 'react';
-import {Box, TextField} from "@mui/material";
+import React, {useEffect} from 'react';
+import {Box, Paper} from "@mui/material";
 import Message from "@/components/ui/message";
-import MyButton from "@/components/ui/myButton";
-import {socket} from "@/pages";
+import SendMessageForm from "@/components/SendMessageForm";
+import {socket} from "@/utils/socketConnect";
+import axios from "axios";
 import {useSelector} from "react-redux";
 
 const MessagesField = () => {
-    const [textMessage, setTextMessage] = React.useState('');
-    const sender_id = useSelector(state => state.user.email)
-    const receiver_id = useSelector(state => state.user.selectedContact)
-    console.log('sender_id', sender_id)
-    console.log('receiver_id', receiver_id)
+    const [messages, setMessages] = React.useState([]);
+    const sender_id = useSelector((state: any) => state.user.id);
+    const receiver_id = useSelector((state: any) => state.user.selectedContact);
 
-    const sendMessage = () => {
-        const message = {
-            sender_id,
-            receiver_id,
-            text: textMessage,
+    useEffect(() => {
+        if (receiver_id === null) return
+        console.log('RERENDER')
+
+        async function fetchMessages() {
+            const response = await axios.get(`http://localhost:8080/messages?sender_id=${sender_id}&receiver_id=${receiver_id}`);
+            setMessages(response.data);
         }
-        socket.emit('message', message)
-    }
+
+        fetchMessages();
+    }, [sender_id, receiver_id])
+
+    socket.on('message', (data) => {
+        // @ts-ignore
+        setMessages([...messages, data]);
+    })
+
 
     return (
-       <>
-           <Box sx={{flex: 'auto', display: 'flex', flexDirection: 'column',}}>
-               <Message text={'This is test message'}/>
-               <Message text={'This is test message'}/>
-               <Message text={'This is test message'}/>
-               <Message text={'This is test message'}/>
-           </Box>
-           <TextField
-               fullWidth id="outlined-basic"
-               label="Outlined"
-               variant="outlined"
-               sx={{position: 'absolute', bottom: 0, left: 0, right: 0}}
-           />
-           <Box sx={{position: 'absolute', bottom: '5px', right: '-15px'}}><MyButton title={'sms'}/></Box>
-       </>
+        <Paper sx={{minHeight: '500px', display: 'flex',flexDirection: 'column', justifyContent: 'space-between'}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width:'100%'}}>
+                {messages.map((message: any, i) => (
+                    <Message key={i} text={message.message_text} sender_id={message.sender_id}/>
+                ))}
+            </Box>
+            <Box sx={{alignSelf: 'flex-end', width:'100%'}}>
+                <SendMessageForm/>
+            </Box>
+        </Paper>
     );
 };
 

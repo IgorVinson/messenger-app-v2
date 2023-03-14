@@ -4,7 +4,10 @@ import {Message} from "@/types/Message";
 
 export interface State {
 
-    contacts: Contact[],
+    contacts: {
+        data: Contact[],
+        isLogin: boolean,
+    },
     user: User,
     messages: Message[],
 }

@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
-// import {fetchContacts} from "@/redux/options";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "redux";
 import {Container} from "@mui/material";
 import {ThemeProvider} from "@mui/system";
 import theme from "@/components/ui/theme";
-import AddContactModal from "@/components/ui/addContactModal";
 import {fetchContacts} from "@/redux/contactsListSlice";
 import {State} from "@/types/State";
 import {getUser} from "@/redux/selectors";
@@ -24,11 +22,10 @@ const ContactsList = () => {
         dispatch(fetchContacts());
     }, [dispatch]);
 
-    const handleContact = (id:string) => {
+    const handleContact = (id: string) => {
         console.log('handleContact', id)
         dispatch(selectContact(id));
     }
-
 
     return (
         <ThemeProvider theme={theme}>
@@ -46,6 +43,7 @@ const ContactsList = () => {
                 {contacts.length === 1 && <Box sx={{textAlign: 'center'}}>no contacts yet</Box>}
                 {/*<AddContactModal/>*/}
             </Container>
+
         </ThemeProvider>
     )
 }
