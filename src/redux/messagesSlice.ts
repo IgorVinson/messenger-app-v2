@@ -1,8 +1,11 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import SetHostname from "@/config";
+
+const hostname = SetHostname()
 
 export const fetchMessages= createAsyncThunk('messages/fetchMessages', async () => {
-    const response = await axios.get('http://localhost:8080/messages');
+    const response = await axios.get(`${hostname}/messages`);
     return response.data;
 });
 

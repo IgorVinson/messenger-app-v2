@@ -1,3 +1,6 @@
 import io from "socket.io-client";
+import SetHostname from "@/config";
 
-export const socket = io('http://localhost:8080');
+const hostname = SetHostname()
+
+export const socket = io(`${hostname}`);

@@ -5,18 +5,20 @@ import SendMessageForm from "@/components/SendMessageForm";
 import {socket} from "@/utils/socketConnect";
 import axios from "axios";
 import {useSelector} from "react-redux";
+import SetHostname from "@/config";
 
 const MessagesField = () => {
     const [messages, setMessages] = React.useState([]);
     const sender_id = useSelector((state: any) => state.user.id);
     const receiver_id = useSelector((state: any) => state.user.selectedContact);
+    const hostname = SetHostname()
+
 
     useEffect(() => {
         if (receiver_id === null) return
-        console.log('RERENDER')
 
         async function fetchMessages() {
-            const response = await axios.get(`http://localhost:8080/messages?sender_id=${sender_id}&receiver_id=${receiver_id}`);
+            const response = await axios.get(`${hostname}/messages?sender_id=${sender_id}&receiver_id=${receiver_id}`);
             setMessages(response.data);
         }
 

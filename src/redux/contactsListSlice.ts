@@ -1,8 +1,12 @@
-import {createSlice, createAsyncThunk, AsyncThunk} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
+import SetHostname from "@/config";
+
+
+const hostname = SetHostname()
 
 export const fetchContacts= createAsyncThunk('users/fetchUsers', async () => {
-    const response = await axios.get('http://localhost:8080/users');
+    const response = await axios.get(`${hostname}/users`);
     return response.data;
 });
 

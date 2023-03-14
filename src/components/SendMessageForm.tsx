@@ -36,14 +36,14 @@ const SendMessageForm = () => {
                 onChange={(e) => setTextMessage(e.target.value)}
                 onKeyDown={handleKeyDown}
             />
-            <Box sx={{
-                position: 'absolute',
-                top: '50%',
-                right: '0',
-                transform: 'translateY(-50%)',
-            }}>
-                <MyButton title={'sms'}/>
-            </Box>
+            {/*<Box sx={{*/}
+            {/*    position: 'absolute',*/}
+            {/*    top: '50%',*/}
+            {/*    right: '0',*/}
+            {/*    transform: 'translateY(-50%)',*/}
+            {/*}}>*/}
+            {/*    <MyButton title={'sms'}/>*/}
+            {/*</Box>*/}
 
         </Box>
     );
